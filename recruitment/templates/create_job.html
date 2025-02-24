@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Autonomous Recruitment App - Post Job</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #f8f8f8;
+            margin: 0;
+            padding: 0;
+        }
+        .header {
+            background-color: #d3d3d3;
+            padding: 15px;
+            font-size: 22px;
+            font-weight: bold;
+        }
+        .container {
+            margin-top: 30px;
+        }
+        .btn {
+            display: inline-block;
+            background-color: #d3d3d3;
+            padding: 10px 20px;
+            margin: 15px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-size: 18px;
+            font-weight: bold;
+            color: black;
+            border: none;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        .btn:hover { background-color: #fffefe; box-shadow: 0px 0px 0px 2px rgb(12 12 12 / 97%); }
+        .form-box {
+            background-color: #d3d3d3;
+            padding: 15px;
+            width: 300px;
+            margin: 0 auto;
+            border-radius: 8px;
+            font-weight: bold;
+        }
+        .form-group {
+            margin: 20px 0;
+        }
+        input, textarea {
+            width: 80%;
+            padding: 10px;
+            margin-top: 5px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+        .submit-btn {
+            background-color: #d3d3d3;
+            padding: 10px 20px;
+            font-size: 16px;
+            font-weight: bold;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        .submit-btn:hover {
+            background-color: #b0b0b0;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="header">Autonomous Recruitment App</div>
+
+    <div class="container">
+        <a href="{% url 'home' %}" class="btn">HOME</a>
+
+        <div class="form-box">Logged in as Recruiter</div>
+
+        <form action="{% url 'post_job' %}" method="POST">
+            {% csrf_token %}
+            <div class="form-group">
+                <label>Enter Job Name</label><br>
+                <input type="text" name="title" placeholder="Job Name" required>
+            </div>
+
+            <div class="form-group">
+                <label>Enter Job Description</label><br>
+                <textarea name="description" rows="4" placeholder="Job Description" required></textarea>
+            </div>
+
+            <div class="form-group">
+                <label>Skills Required For Job</label><br>
+                <textarea name="skills" rows="2" placeholder="Required Skills (comma-separated)" required></textarea>
+            </div>
+
+            <button type="submit" class="submit-btn">Submit</button>
+        </form>
+    </div>
+
+</body>
+</html>

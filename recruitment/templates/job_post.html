@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Autonomous Recruitment App</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: #f8f8f8;
+            margin: 0;
+            padding: 0;
+        }
+        .header {
+            background-color: #d3d3d3;
+            padding: 15px;
+            font-size: 20px;
+            font-weight: bold;
+        }
+        .container {
+            margin-top: 40px;
+            
+        }
+        .new_container{
+                display: flexbox;
+        }
+        .btn {
+            display: inline-block;
+            background-color: #d3d3d3;
+            padding: 15px 20px;
+            margin: 20px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-size: 18px;
+            font-weight: bold;
+            color: black;
+            transition: background 0.3s;
+            box-shadow: 2px 2px 0px 3px rgb(0 0 0 / 97%);
+        }
+        .btn:hover { background-color: #fffefe; box-shadow: 0px 0px 0px 2px rgb(12 12 12 / 97%); }
+    </style>
+</head>
+<body>
+
+    <div class="header">Autonomous Recruitment App</div>
+
+    <div class="container">
+        
+        <div class="btn" style="display: block; margin: 30px auto;">Logged in as Recruiter</div>
+        <a href="{% url 'home' %}" class="btn">HOME</a>   
+        <div class="new_container">
+        
+    <a href="{% url 'job_list' %}" class="btn">See Candidate Results</a>
+
+
+            <a href="{%url 'create_job' %}" class="btn">Post A New Job</a>
+    </div>
+    </div>
+
+</body>
+</html>

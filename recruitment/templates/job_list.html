@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Job Applications</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #d3d3d3; /* Light gray background */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .container {
+            background: #f4f4f4; /* Light gray container */
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background: #fceeee; /* Light pink table background */
+        }
+        th, td {
+            border: 1px solid #000;
+            padding: 12px;
+            text-align: center;
+        }
+        th {
+            background-color: #e0e0e0; /* Light gray header */
+        }
+        td a {
+            color: #007bff;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        td a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h2 style="text-align: center;">Job Applications</h2>
+        
+        <table>
+            <thead>
+                <tr>
+                    <th>S.no</th>
+                    <th>Job Title</th>
+                    <th>Short List</th>
+                    <th>Waiting List</th>
+                    <th>Rejected List</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for job in jobs %}
+                <tr>
+                    <td>{{ forloop.counter }}</td>
+                    <td><strong>{{ job.title }}</strong></td>
+                    <td>{{ job.short_list }} / <a href="#">View All</a></td>
+                    <td>{{ job.waiting_list }} / <a href="#">View All</a></td>
+                    <td>{{ job.rejected_list }} / <a href="#">View All</a></td>
+                </tr>
+                {% empty %}
+                <tr>
+                    <td colspan="5">No job applications found.</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    </div>
+
+
+    <script>fetch("jobs/")
+        .then(response => response.json())
+        .then(data => console.log(JSON.stringify(data, null, 4))); // Pretty print in console
+    </script>
+</body>
+</html>
