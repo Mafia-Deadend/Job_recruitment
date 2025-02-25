@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>{{ job.title }} - {{ status }} Candidates</title>
+</head>
+<body>
+    <h2>{{ job.title }} - {{ status }} Candidates</h2>
+    
+    {% if candidates %}
+        <table border="1">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>Candidate Name</th>
+                    <th>Email</th>
+                    <th>Phone</th>
+                    <th>Resume</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for candidate in candidates %}
+                <tr>
+                    <td>{{ forloop.counter }}</td>
+                    <td>{{ candidate.applicant_name }}</td>
+                    <td>{{ candidate.email }}</td>
+                    <td>{{ candidate.phone }}</td>
+                    <td><a href="{{ candidate.resume.url }}" target="_blank">View Resume</a></td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% else %}
+        <p>No candidates found for this job.</p>
+    {% endif %}
+
+    <a href="/">Back to Jobs</a>
+</body>
+</html>

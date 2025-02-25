@@ -29,44 +29,57 @@
             <table>
                 <thead>
                     <tr>
-                        <th>S.no</th>
+                        <th>#</th>
                         <th>Job Title</th>
-                        <th>Short List</th>
+                        <th>Shortlisted</th>
                         <th>Waiting List</th>
-                        <th>Rejected List</th>
+                        <th>Rejected</th>
                     </tr>
                 </thead>
                 <tbody id="jobTableBody">
-                    <!-- Dynamic Data Will Be Inserted Here -->
+                    <!-- Jobs will be loaded here dynamically -->
+                    {% for job in jobs %}
+                    <tr>
+                        <td>{{ forloop.counter }}</td>
+                        <td>{{ job.job_title }}</td>
+                        <td>{{ job.shortlist_count }} / <a href="/job/{{ job.id }}/candidates/Shortlisted/">View All</a></td>
+                        <td>{{ job.waiting_count }} / <a href="/job/{{ job.id }}/candidates/Waiting List/">View All</a></td>
+                        <td>{{ job.rejected_count }} / <a href="/job/{{ job.id }}/candidates/Rejected/">View All</a></td>
+                        
+                    </tr>
+                    {% endfor %}
                 </tbody>
             </table>
+            
         </div>
     </div>
 
     <script>
-        // Placeholder for fetching data from backend later
         document.addEventListener("DOMContentLoaded", function () {
-            fetch('/api/jobs')  // Example endpoint (to be created in Flask/Django)
+            fetch('/api/jobs/') // Fetch job data from Django API
                 .then(response => response.json())
                 .then(data => {
-                    const jobTableBody = document.getElementById("jobTableBody");
-                    jobTableBody.innerHTML = "";
+                    const jobTableBody = document.getElementById("jobTableBody"); 
+                    jobTableBody.innerHTML = ""; // Clear existing rows
+                    
                     let sno = 1;
-
                     data.forEach(job => {
-                        const row = `<tr>
-                            <td>${sno++}</td>
-                            <td>${job.job_title}</td>
-                            <td>${job.shortlist_count} / <a href="#" class="view-link">View All</a></td>
-                            <td>${job.waiting_count} / <a href="#" class="view-link">View All</a></td>
-                            <td>${job.rejected_count} / <a href="#" class="view-link">View All</a></td>
-                        </tr>`;
+                        const row = `
+                            <tr>
+                                <td>${sno++}</td>
+                                <td>${job.job_title}</td>
+                                <td>${job.shortlist_count} / <a href="/job/${job.id}/" class="view-link">View All</a></td>
+                                <td>${job.waiting_count} / <a href="/job/${job.id}/" class="view-link">View All</a></td>
+                                <td>${job.rejected_count} / <a href="/job/${job.id}/" class="view-link">View All</a></td>
+                            </tr>
+                        `;
                         jobTableBody.innerHTML += row;
                     });
                 })
-                .catch(error => console.error("Error fetching data:", error));
+                .catch(error => console.error("Error fetching job data:", error));
         });
-    </script>
+        </script>
+        
 
 </body>
 </html>
