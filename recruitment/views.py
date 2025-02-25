@@ -92,7 +92,8 @@ def upload_cv(request):
         # Save CV
         fs = FileSystemStorage(location='media/cvs/')
         filename = fs.save(cv_file.name, cv_file)
-        file_path = f"media/cvs/{filename}"
+        file_path = fs.url(filename)  # Correct file path format
+
 
         # Extract Text from CV
         if filename.endswith('.pdf'):
@@ -124,7 +125,7 @@ def upload_cv(request):
             status = "Waiting List"
         else:
             status = "Rejected"
-
+        
         # Save Application
         JobApplication.objects.create(
             name=name,

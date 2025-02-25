@@ -44,6 +44,48 @@
           background-color: #047fe4; 
           box-shadow: 0px 0px 0px 2px rgb(12 12 12 / 97%);
       }
+          /* Table Container Styling */
+    .table-container {
+        background-color: #ffffff;
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0px 5px 15px rgba(0, 0, 0, 0.2);
+        border: 1px solid #ddd;
+        display: inline-block;
+        width: 80%;
+        margin: auto;
+    }
+
+    /* Table Styling */
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        border-radius: 10px;
+        overflow: hidden;
+        background: #fff;
+    }
+
+    th, td {
+        padding: 12px;
+        text-align: left;
+        border-bottom: 1px solid #ddd;
+    }
+
+    th {
+        background-color: #f4f4f4;
+        font-weight: bold;
+    }
+
+    /* Table Row Hover Effect */
+    tbody tr {
+        transition: 0.3s ease-in-out;
+    }
+
+    tbody tr:hover {
+        background-color: #bebcbc;
+        box-shadow: 0px 3px 8px rgba(0, 0, 0, 0.1);
+        transform: scale(1.02);
+    }
   </style>
 </head>
 <body>
@@ -103,7 +145,7 @@
                 </tr>
             </thead>
             
-            <tbody id="jobTableBody mt-3">
+            <tbody id="jobTableBody mt-3" >
                 <!-- Jobs will be loaded here dynamically -->
                 {% for job in jobs %}
                 <tr>

@@ -31,7 +31,7 @@
                     <td>{{ forloop.counter }}</td>
                     <td>{{ candidate.name }}</td>
                     <td>{{ candidate.email }}</td>
-                    <td><a href="{{ candidate.cv.url }}" target="_blank">Download CV</a></td>
+                    <td><a href="{{  candidate.cv.url}}" download>Download CV</a></td>
                 </tr>
                 {% empty %}
                 <tr>
