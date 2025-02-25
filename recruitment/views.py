@@ -37,7 +37,7 @@ def create_job(request):
 
         Job.objects.create(title=title, description=description, required_skills=skills)
         messages.success(request, "Job posted successfully!")
-        return redirect('home')
+        return redirect('home')  # Redirect to home after posting a job
 
     return render(request, 'create_job.html')
 

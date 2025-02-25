@@ -79,7 +79,7 @@
 
         <div class="form-box">Logged in as Recruiter</div>
 
-        <form action="{% url 'post_job' %}" method="POST">
+        <form action="{% url 'create_job' %}" method="POST">
             {% csrf_token %}
             <div class="form-group">
                 <label>Enter Job Name</label><br>

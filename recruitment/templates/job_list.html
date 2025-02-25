@@ -63,9 +63,9 @@
                 <tr>
                     <td>{{ forloop.counter }}</td>
                     <td><strong>{{ job.title }}</strong></td>
-                    <td>{{ job.short_list }} / <a href="#">View All</a></td>
-                    <td>{{ job.waiting_list }} / <a href="#">View All</a></td>
-                    <td>{{ job.rejected_list }} / <a href="#">View All</a></td>
+                    <td>{{ job.short_list }} / <a href="{% url 'job_candidates' job.id 'Shortlisted' %}">View All</a></td>
+                    <td>{{ job.waiting_list }} / <a href="{% url 'job_candidates' job.id 'Waiting List' %}">View All</a></td>
+                    <td>{{ job.rejected_list }} / <a href="{% url 'job_candidates' job.id 'Rejected' %}">View All</a></td>
                 </tr>
                 {% empty %}
                 <tr>
