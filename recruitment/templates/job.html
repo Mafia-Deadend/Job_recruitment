@@ -41,7 +41,7 @@
                     {% for job in jobs %}
                     <tr>
                         <td>{{ forloop.counter }}</td>
-                        <td>{{ job.job_title }}</td>
+                        <td>{{ job.title }}</td>
                         <td>{{ job.shortlist_count }} / <a href="/job/{{ job.id }}/candidates/Shortlisted/">View All</a></td>
                         <td>{{ job.waiting_count }} / <a href="/job/{{ job.id }}/candidates/Waiting List/">View All</a></td>
                         <td>{{ job.rejected_count }} / <a href="/job/{{ job.id }}/candidates/Rejected/">View All</a></td>

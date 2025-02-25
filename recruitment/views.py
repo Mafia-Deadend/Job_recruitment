@@ -157,21 +157,22 @@ def job_list(request):
 
         job_data.append({
             "id": job.id,
-            "job_title": job.title,
+            "title": job.title,
+            "description": job.description,
+            "required_skills": job.required_skills,
             "shortlist_count": shortlisted_count,
             "waiting_count": waiting_count,
             "rejected_count": rejected_count
         })
 
-    return render(request, "job.html" , {"jobs": job_data})  # Render HTML instead of JSON
-
-
-
+    return render(request,'job.html',{"jobs": job_data})  # Returning as JSON for frontend
 
 # Recruitment Dashboard
 def recruitment_dashboard(request):
-    jobs = Job.objects.all()  # Fetch all jobs (corrected)
+    jobs = Job.objects.all()  # Fix: Added ()
     return render(request, 'job_recruitment.html', {'jobs': jobs})
+
+
 
 
 
