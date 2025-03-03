@@ -84,15 +84,16 @@ def upload_cv(request):
         email = request.POST.get('email')
         gender = request.POST.get('gender')
         cv_file = request.FILES.get('cv')
+        
 
         if not (job_id and name and email and gender and cv_file):
             messages.error(request, "All fields are required!")
             return redirect('recruitment_dashboard')
 
         # Save CV
-        fs = FileSystemStorage(location='media/cvs/')
-        filename = fs.save(cv_file.name, cv_file)
-        file_path = fs.url(filename)  # Correct file path format
+        fs = FileSystemStorage(location='media/')
+        filename = fs.save(cv_file.name,cv_file)
+        file_path = fs.path(filename)  # Correct file path format
 
 
         # Extract Text from CV
