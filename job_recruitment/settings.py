@@ -80,8 +80,12 @@ WSGI_APPLICATION = 'job_recruitment.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / "db.sqlite3",
+        'ENGINE': 'django.db.backends.postgresql',
+        'NAME': 'hammadProject',             # your actual database name
+        'USER': 'postgres',             # the username you set (default is usually postgres)
+        'PASSWORD': 'bahadarKhan@126675', # the password you used during PostgreSQL install
+        'HOST': 'localhost',
+        'PORT': '5432',
     }
 }
 

@@ -7,57 +7,30 @@
     <meta name="description" content="A recruitment app for recruiters and candidates to connect.">
     <meta name="keywords" content="recruitment, jobs, hiring, employment">
     <meta name="author" content="Your Name">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <title>Autonomous Recruitment App</title>
-    
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            text-align: center;
-            margin: 0;
-            padding: 0;
-        }
-        .header {
-            background-color: #d3d3d3;
-            padding: 15px;
-            font-size: 20px;
-            font-weight: bold;
-        }
-        .container {
-            margin-top: 50px;
-        }
-        .buttons {
-            display: flex;
-            justify-content: center;
-            gap: 20px;
-            margin-top: 20px;
-        }
-        .btn {
-            display: inline-block;
-            text-decoration: none;
-            color: black;
-            background-color: #d3d3d3;
-            padding: 15px 30px;
-            font-size: 18px;
-            border-radius: 8px;
-            cursor: pointer;
-            box-shadow: 2px 2px 0px 3px rgb(0 0 0 / 97%);
-        }
-        .btn:hover {
-            background-color: #fffefe;
-            box-shadow: 0px 0px 0px 2px rgb(12 12 12 / 97%);
-        }
-    </style>
+
 </head>
 <body>
-    <div class="header">Autonomous Recruitment App</div>
-    <div class="container">
-        <h2>Continue As :</h2>
-        <div class="buttons">
-            <a href="{% url 'post_job' %}" class="btn">Recruiter</a>
-
-            <span>OR</span>
-            <a href="{% url 'recruitment_dashboard' %}" class="btn">Candidate</a>
+    
+    <nav class="navbar navbar-light bg-light">
+        <div class="container-fluid">
+          <span class="navbar-brand mb-0 h1 text-center">Autonomous Recruitment App</span>
         </div>
-    </div>
+    </nav>
+    
+   
+    <div class="px-4 py-5 my-5 text-center">
+        {% comment %} <img class="rounded-circle d-block mx-auto mb-4" src="https://via.placeholder.com/150" alt="" width="72" height="57"> {% endcomment %}
+        <h1 class="display-5 fw-bold">Continue As:</h1>
+        <div class="col-lg-6 mx-auto">
+          <div class="d-grid gap-2 d-sm-flex justify-content-sm-center">
+            <button type="button" class="btn btn-outline-primary btn-lg px-4 gap-3" onclick="window.location.href='{% url 'post_job' %}'">Recruiter</button>
+            <button type="button" class="btn btn-outline-success btn-lg px-4" onclick="window.location.href='{% url 'recruitment_dashboard' %}'">Candidate</button>
+          </div>
+        </div>
+      </div>
+    
 </body>
 </html>
+

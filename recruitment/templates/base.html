@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Side Navigation Bar</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+        }
+        .sidebar {
+            width: 250px;
+            background-color: #333;
+            color: white;
+            height: 100vh;
+            padding: 20px;
+            box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+        }
+        .sidebar h2 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .sidebar ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        .sidebar ul li {
+            margin: 10px 0;
+        }
+        .sidebar ul li a {
+            color: white;
+            text-decoration: none;
+            display: block;
+            padding: 10px;
+            border-radius: 5px;
+            transition: background 0.3s;
+        }
+        .sidebar ul li a:hover {
+            background-color: #575757;
+        }
+        .sidebar ul li ul {
+            list-style-type: none;
+            padding-left: 20px;
+            margin-top: 5px;
+        }
+        .sidebar ul li ul li a {
+            font-size: 14px;
+        }
+        .content {
+            flex: 1;
+            padding: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div class="sidebar">
+        <h2>Navigation</h2>
+        <ul>
+            <li><a href="{% url 'home' %}">Home</a></li>
+            <li>
+                <a href="#">Recruiter</a>
+                <ul>
+                    <li><a href="{% url 'create_job' %}">Post Job</a></li>
+                    <li><a href="{% url 'job_list' %}">Job List</a></li>
+                </ul>
+            </li>
+            <li>
+                <a href="#">Candidate</a>
+                <ul>
+                    <li><a href="{% url 'job_recruitment' %}">Apply for Job</a></li>
+                    <li><a href="{% url 'job_candidates' 1 'Shortlisted' %}">Shortlisted Jobs</a></li>
+                </ul>
+            </li>
+            <li><a href="{% url 'job_post' %}">Job Post</a></li>
+        </ul>
+    </div>
+    <div class="content">
+        {% block content %}
+        <!-- Page-specific content will go here -->
+        {% endblock %}
+    </div>
+</body>
+</html>
