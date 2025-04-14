@@ -1,62 +1,139 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Autonomous Recruitment App</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            text-align: center;
-            background-color: #f8f8f8;
-            margin: 0;
-            padding: 0;
-        }
-        .header {
-            background-color: #d3d3d3;
-            padding: 15px;
-            font-size: 20px;
-            font-weight: bold;
-        }
-        .container {
-            margin-top: 40px;
-            
-        }
-        .new_container{
-                display: flexbox;
-        }
-        .btn {
-            display: inline-block;
-            background-color: #d3d3d3;
-            padding: 15px 20px;
-            margin: 20px;
-            border-radius: 8px;
-            text-decoration: none;
-            font-size: 18px;
-            font-weight: bold;
-            color: black;
-            transition: background 0.3s;
-            box-shadow: 2px 2px 0px 3px rgb(0 0 0 / 97%);
-        }
-        .btn:hover { background-color: #fffefe; box-shadow: 0px 0px 0px 2px rgb(12 12 12 / 97%); }
-    </style>
-</head>
-<body>
+{% extends "template.html" %}
 
-    <div class="header">Autonomous Recruitment App</div>
+{% block title %}Job Post{% endblock %}
+{% block extra_head%} 
+<style>
+    .icon-wrapper {
+        position: relative;
+        width: 100px;
+        height: 100px;
+        margin: 0 auto; /* center it horizontally */
+        transition: all 0.3s ease;
+      }
+      
+      .icon-bg path {
+        transition: fill 0.3s ease;
+      }
+      
+      .icon-wrapper:hover .icon-bg path {
+        fill: #0dcaf0; /* change this color to what you want on hover */
+      }
+      
+      .icon-center {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        font-size: 2rem;
+        transform: translate(-50%, -50%);
+        color: #333;
+      }
 
-    <div class="container">
-        
-        <div class="btn" style="display: block; margin: 30px auto;">Logged in as Recruiter</div>
-        <a href="{% url 'home' %}" class="btn">HOME</a>   
-        <div class="new_container">
-        
-    <a href="{% url 'job_list' %}" class="btn">See Candidate Results</a>
+      .icon-1{
+        color: #FFA500;
+      }
 
+      .service-item:hover .icon-bg-1 path {
+        fill: #FFA500;
+        color: white; /* or any other hover color */
+      }
+      .service-item:hover .icon-1{
+        color: white;
+      }
 
-            <a href="{%url 'create_job' %}" class="btn">Post A New Job</a>
+      .icon-2{
+        color: #A020F0;
+      }
+
+      .service-item:hover .icon-bg-2 path {
+        fill: #A020F0;
+        color: white; /* or any other hover color */
+      }
+      .service-item:hover .icon-2{
+        color: white;
+      }
+
+      a{
+        text-decoration: none;
+      }
+      
+</style>
+
+{% endblock%}
+
+{% block content %}
+<div class="container">
+    <div class="row m-5">
+        <div class="col-12">
+            <h1 class="center bg-light border p-2 d-flex justify-content-center">Logged in as Recruiter</h1>
+        </div>
     </div>
+    <div class="row">
+        <div class="col-12 p-3 ">
+            <div class="row p-2">
+                <div class="col-12 d-flex justify-content-center">
+                    <button onclick="window.location.href='{% url 'home' %}'" class="btn btn-outline-primary"><i class="bi bi-house"></i></button>
+                </div>
+            </div>
+            <div class="row p-2">
+                <div class="col-12  ">   
+                    <div class="row">
+                        <div class="col-lg-6 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="300">
+                            <div class="service-item item-teal bg-transparent rounded justify-content-center border border-success position-relative">
+                                <div class="icon-wrapper">
+                                    <svg class="icon-bg icon-bg-1" width="100" height="100" viewBox="0 0 600 600" xmlns="http://www.w3.org/2000/svg">
+                                      <path fill="#f5f5f5"
+                                        d="M300,541.5067337569781C382.14930387511276,545.0595476570109,479.8736841581634,548.3450877840088,
+                                        526.4010558755058,480.5488172755941C571.5218469581645,414.80211281144784,
+                                        517.5187510058486,332.0715597781072,496.52539010469104,255.14436215662573C477.37192572678356,
+                                        184.95920475031193,473.57363656557914,105.61284051026155,413.0603344069578,
+                                        65.22779650032875C343.27470386102294,18.654635553484475,251.2091493199835,
+                                        5.337323636656869,175.0934190732945,40.62881213300186C97.87086631185822,
+                                        76.43348514350839,51.98124368387456,156.15599469081315,36.44837278890362,
+                                        239.84606092416172C21.716077023791087,319.22268207091537,43.775223500013084,
+                                        401.1760424656574,96.891909868211,461.97329694683043C147.22146801428983,
+                                        519.5804099606455,223.5754009179313,538.201503339737,300,541.5067337569781">
+                                      </path>
+                                    </svg>
+                                    <i class="bi bi-briefcase icon-center icon-1"></i>
+                                  </div>
+                                  <a href="{% url 'job_list' %}" class="stretched-link text-center">
+                                    <h3>See Candidate Results</h3>
+                                  </a>
+                                  <p class="text-center">Explore the list of candidates who applied for jobs. View their performance and application status in detail.</p>
+                            </div>
+                        </div>
+                          
+                        <div class="col-lg-6 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="500">
+                            <div class="service-item item-teal bg-transparent rounded justify-content-center border border-success position-relative">
+                              <div class="icon-wrapper">
+                                <svg class="icon-bg icon-bg-2" width="100" height="100" viewBox="0 0 600 600" xmlns="http://www.w3.org/2000/svg">
+                                  <path stroke="none" stroke-width="0" fill="#f5f5f5"
+                                    d="M300,541.5067337569781C382.14930387511276,545.0595476570109,479.8736841581634,548.3450877840088,
+                                    526.4010558755058,480.5488172755941C571.5218469581645,414.80211281144784,
+                                    517.5187510058486,332.0715597781072,496.52539010469104,255.14436215662573C477.37192572678356,
+                                    184.95920475031193,473.57363656557914,105.61284051026155,413.0603344069578,
+                                    65.22779650032875C343.27470386102294,18.654635553484475,251.2091493199835,
+                                    5.337323636656869,175.0934190732945,40.62881213300186C97.87086631185822,
+                                    76.43348514350839,51.98124368387456,156.15599469081315,36.44837278890362,
+                                    239.84606092416172C21.716077023791087,319.22268207091537,43.775223500013084,
+                                    401.1760424656574,96.891909868211,461.97329694683043C147.22146801428983,
+                                    519.5804099606455,223.5754009179313,538.201503339737,300,541.5067337569781">
+                                  </path>
+                                </svg>
+                                <i class="bi bi-plus-circle icon-center icon-2"></i>
+                              </div>
+                              <a href="{% url 'create_job' %}" class="stretched-link text-center" style="decoration: none;">
+                                <h3 style="decoration: none;">Post a New Job</h3>
+                              </a>
+                              <p class="text-center">Create and post a brand new job opening for candidates to apply. Fill in job details and start hiring instantly.</p>
+                            </div>
+                          </div>
+                          
+                          
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
-
-</body>
-</html>
+</div>
+{% endblock %}

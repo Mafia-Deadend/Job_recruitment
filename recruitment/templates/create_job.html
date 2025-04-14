@@ -1,104 +1,42 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Autonomous Recruitment App - Post Job</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            text-align: center;
-            background-color: #f8f8f8;
-            margin: 0;
-            padding: 0;
-        }
-        .header {
-            background-color: #d3d3d3;
-            padding: 15px;
-            font-size: 22px;
-            font-weight: bold;
-        }
-        .container {
-            margin-top: 30px;
-        }
-        .btn {
-            display: inline-block;
-            background-color: #d3d3d3;
-            padding: 10px 20px;
-            margin: 15px;
-            border-radius: 8px;
-            text-decoration: none;
-            font-size: 18px;
-            font-weight: bold;
-            color: black;
-            border: none;
-            cursor: pointer;
-            transition: background 0.3s;
-        }
-        .btn:hover { background-color: #fffefe; box-shadow: 0px 0px 0px 2px rgb(12 12 12 / 97%); }
-        .form-box {
-            background-color: #d3d3d3;
-            padding: 15px;
-            width: 300px;
-            margin: 0 auto;
-            border-radius: 8px;
-            font-weight: bold;
-        }
-        .form-group {
-            margin: 20px 0;
-        }
-        input, textarea {
-            width: 80%;
-            padding: 10px;
-            margin-top: 5px;
-            border: 1px solid #ccc;
-            border-radius: 5px;
-            font-size: 16px;
-        }
-        .submit-btn {
-            background-color: #d3d3d3;
-            padding: 10px 20px;
-            font-size: 16px;
-            font-weight: bold;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            transition: background 0.3s;
-        }
-        .submit-btn:hover {
-            background-color: #b0b0b0;
-        }
-    </style>
-</head>
-<body>
+{% extends "template.html" %}
+{% block title %}Create Job{% endblock %}
+{% block extra_head%} 
 
-    <div class="header">Autonomous Recruitment App</div>
+{% endblock%}
 
-    <div class="container">
-        <a href="{% url 'home' %}" class="btn">HOME</a>
-
-        <div class="form-box">Logged in as Recruiter</div>
-
-        <form action="{% url 'create_job' %}" method="POST">
-            {% csrf_token %}
-            <div class="form-group">
-                <label>Enter Job Name</label><br>
-                <input type="text" name="title" placeholder="Job Name" required>
-            </div>
-
-            <div class="form-group">
-                <label>Enter Job Description</label><br>
-                <textarea name="description" rows="4" placeholder="Job Description" required></textarea>
-            </div>
-
-            <div class="form-group">
-                <label>Skills Required For Job</label><br>
-                <textarea name="skills" rows="2" placeholder="Required Skills (comma-separated)" required></textarea>
-            </div>
-
-            <button type="submit" class="submit-btn">Submit</button>
-        </form>
+{% block content %}
+<div class="container">
+    <div class="row m-5">
+        <div class="col-12">
+            <h1 class="center bg-light border p-2 d-flex justify-content-center">Logged in as Recruiter</h1>
+        </div>
     </div>
 
-</body>
-</html>
+    <div class="row">
+        <div class="col-lg-2"></div>
+        <div class="col-12 col-lg-8">
+            
+            <form action="{% url 'create_job' %}" method="POST">
+                {% csrf_token %}
+                <div class="form-group">
+                  <label for="exampleInputText">Enter Job Name</label>
+                  <input type="Text" class="form-control" name="title" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter Job Name">
+                  {% comment %} <small id="emailHelp" class="form-text text-muted">We'll never share your email with anyone else.</small> {% endcomment %}
+                </div>
+                <div class="form-group">
+                  <label for="exampleInputText">Skills Required for Job</label>
+                  <input type="Text" class="form-control" name="skills" id="exampleInputPassword1" placeholder="Required Skills (comma-separated)">
+                </div>
+                <div class="form-group">
+                    <label for="exampleFormControlTextarea1">Example textarea</label>
+                    <textarea class="form-control" name="description" id="exampleFormControlTextarea1" rows="3" placeholder="Job Description"></textarea>
+                </div>
+                <div class="d-grid gap-2">
+                    <button type="submit" class="btn btn-primary mt-2">Submit</button>
+                </div>
+              </form>
+        </div>
+        <div class="col-lg-2"></div>
+    </div>
+</div>
+{% endblock %}

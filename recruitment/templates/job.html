@@ -1,10 +1,14 @@
-<!DOCTYPE html>
+{% extends "template.html" %}
+
+{% comment %} <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
     <title>Autonomous Recruitment App</title>
-    <style>
+    {% comment %} <style>
         body { font-family: Arial, sans-serif; text-align: center; background-color: #f8f8f8; margin: 0; padding: 0; }
         .header { background-color: #d3d3d3; padding: 15px; font-size: 22px; font-weight: bold; }
         .btn { background-color: #d3d3d3; padding: 10px 20px; margin: 33px; border-radius: 8px; text-decoration: none; font-size: 18px; font-weight: bold; color: black; border: none; cursor: pointer; transition: background 0.3s; box-shadow: 2px 2px 0px 3px rgb(0 0 0 / 97%);}
@@ -15,7 +19,8 @@
         th, td { border: 1px solid black; padding: 10px; text-align: center; }
         th { background-color: #d3d3d3; }
         .view-link { color: blue; cursor: pointer; text-decoration: underline; }
-    </style>
+    </style> {% endcomment %}
+    {% comment %}
 </head>
 <body>
 
@@ -25,8 +30,8 @@
         <a href="{% url 'home' %}" class="btn">HOME</a>
         <div class="btn">Logged in as Recruiter</div>
 
-        <div class="table-container">
-            <table>
+        <div class="container">
+            <table class="table table-striped-columns">
                 <thead>
                     <tr>
                         <th>#</th>
@@ -82,4 +87,55 @@
         
 
 </body>
-</html>
+</html> 
+{% endcomment %}
+
+
+
+{% block title %}Create Job{% endblock %}
+{% block extra_head%} 
+
+{% endblock%}
+
+{% block content %}
+<div class="container">
+    <div class="row m-5">
+        <div class="col-12">
+            <h1 class="center bg-light border p-2 d-flex justify-content-center">Logged in as Recruiter</h1>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-lg-2"></div>
+        <div class="col-12 col-lg-8">
+            <table class="table table-striped-columns">
+                <thead>
+                    <tr>
+                        <th>#</th>
+                        <th>Job Title</th>
+                        <th>Shortlisted</th>
+                        <th>Waiting List</th>
+                        <th>Rejected</th>
+                    </tr>
+                </thead>
+                <tbody id="jobTableBody">
+                    <!-- Jobs will be loaded here dynamically -->
+                    {% for job in jobs %}
+                    <tr>
+                        <td>{{ forloop.counter }}</td>
+                        <td>{{ job.title }}</td>
+                        <td>{{ job.shortlist_count }} / <a href="/job/{{ job.id }}/candidates/Shortlisted/">View All</a></td>
+                        <td>{{ job.waiting_count }} / <a href="/job/{{ job.id }}/candidates/Waiting List/">View All</a></td>
+                        <td>{{ job.rejected_count }} / <a href="/job/{{ job.id }}/candidates/Rejected/">View All</a></td>
+                        
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+            
+        </div>
+        <div class="col-lg-2"></div>
+    </div>
+</div>
+{% endblock %}
+
