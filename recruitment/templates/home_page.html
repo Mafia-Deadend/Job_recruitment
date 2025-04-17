@@ -18,5 +18,32 @@ Autonomous Recruitment App
           </div>
         </div>
     </div>
+    <div class="row p-2">
+      <div class="col-12  ">   
+          <div class="row">
+              <div class="col-lg-6 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="300">
+                  <div class="service-item item-teal bg-transparent rounded justify-content-center border border-success position-relative">
+                    
+                        <a href="{% url 'job_list' %}" class="stretched-link text-center">
+                          <h3>See Candidate Results</h3>
+                        </a>
+                        <p class="text-center">Explore the list of candidates who applied for jobs. View their performance and application status in detail.</p>
+                  </div>
+              </div>
+                
+              <div class="col-lg-6 col-md-6 mb-4" data-aos="fade-up" data-aos-delay="500">
+                  <div class="service-item item-teal bg-transparent rounded justify-content-center border border-success position-relative">
+                    
+                    <a href="{% url 'create_job' %}" class="stretched-link text-center" style="decoration: none;">
+                      <h3 style="decoration: none;">Post a New Job</h3>
+                    </a>
+                    <p class="text-center">Create and post a brand new job opening for candidates to apply. Fill in job details and start hiring instantly.</p>
+                  </div>
+                </div>
+                
+                
+          </div>
+      </div>
+  </div>
 </div>
 {% endblock %}

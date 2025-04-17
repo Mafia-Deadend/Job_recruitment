@@ -39,6 +39,8 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'recruitment',  # Add your app
+    'accounts',
+
 ]
 
 MEDIA_URL = '/media/'
@@ -74,6 +76,7 @@ TEMPLATES = [
 
 WSGI_APPLICATION = 'job_recruitment.wsgi.application'
 
+AUTH_USER_MODEL = 'accounts.Account'
 
 # Database
 # https://docs.djangoproject.com/en/5.1/ref/settings/#databases
@@ -81,7 +84,7 @@ WSGI_APPLICATION = 'job_recruitment.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'hammadProject',             # your actual database name
+        'NAME': 'hammadProject1',             # your actual database name
         'USER': 'postgres',             # the username you set (default is usually postgres)
         'PASSWORD': 'bahadarKhan@126675', # the password you used during PostgreSQL install
         'HOST': 'localhost',
