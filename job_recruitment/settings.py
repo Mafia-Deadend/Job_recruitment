@@ -86,7 +86,7 @@ DATABASES = {
         'ENGINE': 'django.db.backends.postgresql',
         'NAME': 'hammadProject1',             # your actual database name
         'USER': 'postgres',             # the username you set (default is usually postgres)
-        'PASSWORD': 'bahadarKhan@126675', # the password you used during PostgreSQL install
+        'PASSWORD': '123', # the password you used during PostgreSQL install
         'HOST': 'localhost',
         'PORT': '5432',
     }
